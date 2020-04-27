@@ -21,6 +21,7 @@ import org.jboss.tools.quarkus.integration.tests.launch.configuration.CreateNewQ
 import org.jboss.tools.quarkus.integration.tests.launch.configuration.CreateNewQuarkusConfigurationMavenTest;
 import org.jboss.tools.quarkus.integration.tests.project.CreateNewProjectTest;
 import org.jboss.tools.quarkus.integration.tests.project.InstallQuarkusExtensionTest;
+import org.jboss.tools.quarkus.integration.tests.project.RunProjectWithDebugTest;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
@@ -33,12 +34,13 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(RedDeerSuite.class)
 @SuiteClasses({
 	PerspectiveTest.class,
-	ApplicationPropertiesContentAssistTest.class,
-	ApplicationPropertiesNewExtensionContentAssistTest.class,
 	CreateNewProjectTest.class,
 	CreateNewQuarkusConfigurationMavenTest.class,
 	CreateNewQuarkusConfigurationGradleTest.class,
+	RunProjectWithDebugTest.class,
+	ApplicationPropertiesContentAssistTest.class,
 	InstallQuarkusExtensionTest.class,
+	ApplicationPropertiesNewExtensionContentAssistTest.class,
 	
 })
 public class QuarkusIntegrationTests {
