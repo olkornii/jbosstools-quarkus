@@ -49,26 +49,15 @@ public abstract class AbstractContentAssistantTest extends AbstractQuarkusTestMe
 		checkProblemsView();
 	}
 
-	public ContentAssistant testContentAssistant(String projectName, String testForContentAssist) {
+	public ContentAssistant testContentAssistant(String projectName, String textForContentAssist) {
 		new WorkbenchShell().setFocus();
 		new ProjectExplorer().selectProjects(projectName);
 
-		new ProjectExplorer().getProject(projectName).getProjectItem(RESOURCE_PATH)
-				.getProjectItem(APPLICATION_PROPERTIES).open();
+		TextEditor editor = openFileWithGenericTextEditor(projectName);
 
-		TextEditor ed = new TextEditor(APPLICATION_PROPERTIES);
-		ed.insertLine(0, testForContentAssist);
-		ed.selectText(testForContentAssist);
+		insertAndCheckProposal(editor, textForContentAssist);
 
-		ContentAssistant ca = ed.openContentAssistant();
-
-		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
-		try {
-			Thread.sleep(1000); // 1 second sleep for sure, that Content Assistant will open
-		} catch (InterruptedException e) {
-			QuarkusCorePlugin.logException("Interrupted!", e);
-			Thread.currentThread().interrupt();
-		}
+		ContentAssistant ca = openContentAssist(editor);
 
 		return ca;
 	}
@@ -89,7 +78,7 @@ public abstract class AbstractContentAssistantTest extends AbstractQuarkusTestMe
 	/**
 	 * Selecting an exist proposal for check, that this proposal is in proposals
 	 */
-	public void checkProposal(ContentAssistant ca, String proposal) {
+	public static void checkProposal(ContentAssistant ca, String proposal) {
 		try {
 			ca.chooseProposal(proposal);
 		} catch (CoreLayerException e) {
@@ -115,6 +104,35 @@ public abstract class AbstractContentAssistantTest extends AbstractQuarkusTestMe
 		}
 
 		WorkbenchShellHandler.getInstance().closeAllNonWorbenchShells();
-		new WaitWhile(new JobIsRunning(), TimePeriod.VERY_LONG);
 	}
+
+	public static TextEditor openFileWithGenericTextEditor(String projectName) {
+		new ProjectExplorer().getProject(projectName).getProjectItem(RESOURCE_PATH)
+				.getProjectItem(APPLICATION_PROPERTIES).open();
+
+		TextEditor ed = new TextEditor(APPLICATION_PROPERTIES);
+
+		return ed;
+	}
+
+	public static ContentAssistant openContentAssist(TextEditor editor) {
+
+		ContentAssistant contentAssist = editor.openContentAssistant();
+
+		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
+		try {
+			Thread.sleep(1000); // 1 second sleep for sure, that Content Assistant will open
+		} catch (InterruptedException e) {
+			QuarkusCorePlugin.logException("Interrupted!", e);
+			Thread.currentThread().interrupt();
+		}
+
+		return contentAssist;
+	}
+
+	public static void insertAndCheckProposal(TextEditor editor, String textForContentAssist) {
+		editor.insertLine(0, textForContentAssist);
+		editor.selectText(textForContentAssist);
+	}
+
 }
