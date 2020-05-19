@@ -43,7 +43,13 @@ import org.junit.runners.Suite.SuiteClasses;
 	ApplicationPropertiesNewExtensionContentAssistTest.class,
 	
 })
+
 public class QuarkusIntegrationTests {
+	
+	private QuarkusIntegrationTests() {
+		throw new IllegalStateException("QuarkusIntegrationTests class");
+	}
+	
 	@BeforeClass
 	public static void setup() {
 		System.setProperty(CODE_ENDPOINT_URL_PROPERTY_NAME, CODE_ENDPOINT_URL_TEST);
