@@ -19,7 +19,7 @@ import org.eclipse.reddeer.swt.impl.button.PushButton;
 import org.eclipse.reddeer.swt.impl.menu.ContextMenuItem;
 import org.eclipse.reddeer.swt.impl.table.DefaultTableItem;
 import org.eclipse.reddeer.swt.impl.tree.DefaultTreeItem;
-import org.jboss.tools.quarkus.integration.tests.project.universal.methods.AbstractQuarkusTestMethods;
+import org.jboss.tools.quarkus.integration.tests.project.universal.methods.AbstractQuarkusTest;
 import org.jboss.tools.quarkus.reddeer.common.QuarkusLabels.TextLabels;
 import org.jboss.tools.quarkus.reddeer.ui.launch.QuarkusLaunchConfigurationTabGroup;
 import org.eclipse.reddeer.swt.impl.toolbar.DefaultToolItem;
@@ -30,7 +30,7 @@ import org.eclipse.reddeer.swt.impl.toolbar.DefaultToolItem;
  *
  */
 
-public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTestMethods {
+public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTest {
 	public static void createNewQuarkusProject(String projectName, String projectType) {
 		testCreateNewProject(projectName, projectType);
 		checkJdkVersion(projectName, projectType);
@@ -81,7 +81,7 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 		ConsoleView consoleView = new ConsoleView();
 		new WaitUntil(new ConsoleHasText(consoleView, "[io.quarkus]"), TimePeriod.getCustom(600));
 
-		checkUrlContent();
+		checkUrlContent("hello");
 
 		new DefaultToolItem("Terminate").click();
 	}

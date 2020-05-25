@@ -43,7 +43,7 @@ import org.junit.After;
  * @author olkornii@redhat.com
  *
  */
-public abstract class AbstractQuarkusTestMethods {
+public abstract class AbstractQuarkusTest {
 
 	private static String jdkVersion11 = "11";
 	private static String propertyName = "java.specification.version";
@@ -152,7 +152,7 @@ public abstract class AbstractQuarkusTestMethods {
 
 	}
 
-	public static void checkUrlContent() {
+	public static void checkUrlContent(String should_be) {
 		String urlContent = "";
 
 		try {
@@ -161,7 +161,7 @@ public abstract class AbstractQuarkusTestMethods {
 			QuarkusCorePlugin.logException("Wrong URL!", e);
 		}
 
-		assertEquals("Should be <hello> , bus is <" + urlContent + ">", "hello", urlContent);
+		assertEquals("Should be <" + should_be + "> , but is <" + urlContent + ">", should_be, urlContent);
 	}
 
 	public static String getUrlContent(String readedURL) throws IOException {
@@ -171,6 +171,8 @@ public abstract class AbstractQuarkusTestMethods {
 		try (BufferedReader in = new BufferedReader(new InputStreamReader(localhost.openStream()));) {
 			inputLine = in.readLine();
 			in.close();
+		} catch (IOException e) {
+			QuarkusCorePlugin.logException("Can`t read from url!", e);
 		}
 		return inputLine;
 	}

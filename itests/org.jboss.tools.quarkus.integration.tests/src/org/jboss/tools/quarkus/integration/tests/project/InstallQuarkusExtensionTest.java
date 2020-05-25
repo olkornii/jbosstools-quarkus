@@ -30,7 +30,7 @@ import org.eclipse.reddeer.requirements.openperspective.OpenPerspectiveRequireme
 import org.eclipse.reddeer.swt.impl.menu.ContextMenuItem;
 import org.eclipse.reddeer.workbench.core.condition.JobIsRunning;
 import org.eclipse.reddeer.workbench.impl.shell.WorkbenchShell;
-import org.jboss.tools.quarkus.integration.tests.project.universal.methods.AbstractQuarkusTestMethods;
+import org.jboss.tools.quarkus.integration.tests.project.universal.methods.AbstractQuarkusTest;
 import org.jboss.tools.quarkus.reddeer.common.QuarkusLabels.TextLabels;
 import org.jboss.tools.quarkus.reddeer.perspective.QuarkusPerspective;
 import org.jboss.tools.quarkus.reddeer.view.ExtensionsView;
@@ -44,7 +44,7 @@ import org.junit.runner.RunWith;
  */
 @OpenPerspective(QuarkusPerspective.class)
 @RunWith(RedDeerSuite.class)
-public class InstallQuarkusExtensionTest extends AbstractQuarkusTestMethods {
+public class InstallQuarkusExtensionTest extends AbstractQuarkusTest {
 
 	protected static final String WORKSPACE = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
 

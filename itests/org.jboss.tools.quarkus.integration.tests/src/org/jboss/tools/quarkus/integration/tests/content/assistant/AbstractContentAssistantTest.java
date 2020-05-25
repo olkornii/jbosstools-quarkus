@@ -29,14 +29,14 @@ import org.jboss.tools.quarkus.reddeer.common.QuarkusLabels.TextLabels;
 import org.jboss.tools.quarkus.reddeer.view.ExtensionsView;
 import org.jboss.tools.quarkus.core.QuarkusCorePlugin;
 import org.jboss.tools.quarkus.integration.tests.project.InstallQuarkusExtensionTest;
-import org.jboss.tools.quarkus.integration.tests.project.universal.methods.AbstractQuarkusTestMethods;
+import org.jboss.tools.quarkus.integration.tests.project.universal.methods.AbstractQuarkusTest;
 
 /**
  * 
  * @author olkornii@redhat.com
  *
  */
-public abstract class AbstractContentAssistantTest extends AbstractQuarkusTestMethods {
+public abstract class AbstractContentAssistantTest extends AbstractQuarkusTest {
 
 	protected static final String WORKSPACE = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString();
 
