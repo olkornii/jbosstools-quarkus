@@ -10,11 +10,14 @@
  ******************************************************************************/
 package org.jboss.tools.quarkus.integration.tests.content.assistant;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.eclipse.reddeer.jface.text.contentassist.ContentAssistant;
 import org.eclipse.reddeer.junit.runner.RedDeerSuite;
 import org.eclipse.reddeer.requirements.openperspective.OpenPerspectiveRequirement.OpenPerspective;
+import org.eclipse.reddeer.workbench.impl.editor.TextEditor;
+import org.jboss.tools.quarkus.reddeer.common.QuarkusLabels.TextLabels;
 import org.jboss.tools.quarkus.reddeer.perspective.QuarkusPerspective;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -40,16 +43,15 @@ public class ApplicationPropertiesNewExtensionContentAssistTest extends Abstract
 
 	@Test
 	public void testContentAssistOldNew() {
-		ContentAssistant ca = testContentAssistant(NEW_EXTENSION_PROJECT_NAME, TEXT_FOR_TEST_CONTENT_ASSIST);
+		ContentAssistant ca_old = testContentAssistant(NEW_EXTENSION_PROJECT_NAME, TEXT_FOR_TEST_CONTENT_ASSIST);
+		assertFalse(checkProposal(ca_old, PORPOSAL_FOR_SELECT));
 
-		boolean isOk = checkProposalError(ca, PORPOSAL_FOR_SELECT);
-		if (isOk) {
-			addExtension(NEW_EXTENSION_PROJECT_NAME);
+		TextEditor editor = openFileWithTextEditor(NEW_EXTENSION_PROJECT_NAME, TextLabels.GENERIC_TEXT_EDITOR);
+		editor.close(false);
 
-			ca = testContentAssistant(NEW_EXTENSION_PROJECT_NAME, TEXT_FOR_TEST_CONTENT_ASSIST);
-			checkProposal(ca, PORPOSAL_FOR_SELECT);
-		} else {
-			fail("Extension already added!");
-		}
+		addExtension(NEW_EXTENSION_PROJECT_NAME);
+
+		ContentAssistant ca_new = testContentAssistant(NEW_EXTENSION_PROJECT_NAME, TEXT_FOR_TEST_CONTENT_ASSIST);
+		assertTrue(checkProposal(ca_new, PORPOSAL_FOR_SELECT));
 	}
 }
