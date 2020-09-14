@@ -113,7 +113,7 @@ public abstract class AbstractContentAssistantTest {
 			try {
 				new ProjectExplorer().getProject(projectName).getProjectItem(RESOURCE_PATH)
 						.getProjectItem(APPLICATION_PROPERTIES).open();
-			} catch (org.eclipse.reddeer.common.exception.WaitTimeoutExpiredException e) {
+			} catch (org.eclipse.reddeer.common.exception.WaitTimeoutExpiredException e) { // comment
 			}
 		} else {
 			new ProjectExplorer().getProject(projectName).getProjectItem(RESOURCE_PATH)
