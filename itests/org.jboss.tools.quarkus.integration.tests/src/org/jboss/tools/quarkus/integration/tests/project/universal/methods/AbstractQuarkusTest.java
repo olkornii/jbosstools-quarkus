@@ -93,7 +93,7 @@ public abstract class AbstractQuarkusTest {
 		String actualTarget;
 		String openFile;
 
-		if (!isFound) {
+//		if (!isFound) {
 			if (projectType.equals(TextLabels.GRADLE_TYPE)) {
 				javaVersion = javaVersion.replaceAll("\\.", "_");
 				newSource = gradleCompilerSource + javaVersion;
@@ -109,7 +109,7 @@ public abstract class AbstractQuarkusTest {
 				openFile = pomFile;
 			}
 			changeVersion(projectName, projectType, openFile, actualSource, actualTarget, newSource, newTarget);
-		}
+//		}
 	}
 
 	private static void changeVersion(String projectName, String projectType, String openFile, String actualSource,
@@ -119,10 +119,20 @@ public abstract class AbstractQuarkusTest {
 
 		TextEditor ed = new TextEditor(openFile);
 
-		changeLine(ed, actualSource, newSource);
-		changeLine(ed, actualTarget, newTarget);
+//		changeLine(ed, actualSource, newSource);
+//		changeLine(ed, actualTarget, newTarget);
+		
+		if (projectType.equals(TextLabels.MAVEN_TYPE)) {
+			int line_to_delete = ed.getLineOfText("<goal>generate-code</goal>");
+			ed.selectLine(line_to_delete);
+			new ContextMenuItem(TextLabels.CUT_CONTEXT_MENU_ITEM).select();
+			line_to_delete = ed.getLineOfText("<goal>generate-code-tests</goal>");
+			ed.selectLine(line_to_delete);
+			new ContextMenuItem(TextLabels.CUT_CONTEXT_MENU_ITEM).select();
+			ed.save();
+		}
 
-		ed.save();
+//		ed.save();
 		ed.close();
 
 		new ProjectExplorer().selectProjects(projectName);
