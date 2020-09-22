@@ -25,6 +25,8 @@ import org.eclipse.reddeer.eclipse.ui.navigator.resources.ProjectExplorer;
 import org.eclipse.reddeer.eclipse.ui.problems.Problem;
 import org.eclipse.reddeer.eclipse.ui.views.markers.ProblemsView;
 import org.eclipse.reddeer.eclipse.ui.views.markers.ProblemsView.ProblemType;
+import org.eclipse.reddeer.swt.impl.button.FinishButton;
+import org.eclipse.reddeer.swt.impl.button.NextButton;
 import org.eclipse.reddeer.swt.impl.button.OkButton;
 import org.eclipse.reddeer.swt.impl.menu.ContextMenuItem;
 import org.eclipse.reddeer.swt.impl.text.LabeledText;
@@ -185,6 +187,19 @@ public abstract class AbstractQuarkusTest {
 			QuarkusCorePlugin.logException("Can`t read from url!", e);
 		}
 		return inputLine;
+	}
+	
+	public static void createNewFile(String projectName, String fileName, String filePath) {
+		new WorkbenchShell().setFocus();
+		new ProjectExplorer().selectProjects(projectName);
+
+		new ProjectExplorer().getProject(projectName).getProjectItem(filePath).select();
+		new ContextMenuItem(TextLabels.NEW_CONTEXT_ITEM, TextLabels.OTHER_CONTEXT_MENU_ITEM).select();
+		new LabeledText("Wizards:").setText("File");
+		new NextButton().click();
+		new LabeledText("File name:").setText(fileName);
+		new FinishButton().click();
+		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
 	}
 
 	@After

@@ -57,8 +57,7 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 		new DefaultTableItem(projectName).select();
 		new OkButton().click();
 
-//		new QuarkusLaunchConfigurationTabGroup().apply();
-		new PushButton("Apply").click();
+		new QuarkusLaunchConfigurationTabGroup().apply();
 		new PushButton(TextLabels.CLOSE).click();
 	}
 

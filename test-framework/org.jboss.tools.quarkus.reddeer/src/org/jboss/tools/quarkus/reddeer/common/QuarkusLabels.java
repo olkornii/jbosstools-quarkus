@@ -34,6 +34,7 @@ public class QuarkusLabels {
 	public static class TextLabels {
 		public static final String FILE_CONTEXT_MENU = "File";
 		public static final String NEW_CONTEXT_ITEM = "New";
+		public static final String OTHER_CONTEXT_MENU_ITEM = "Other...";
 		public static final String RUN_AS_CONTEXT_MENU_ITEM = "Run As";
 		public static final String RUN_CONFIGURATION_CONTEXT_MENU_ITEM = "Run Configurations...";
 		public static final String DEBUG_AS_CONTEXT_MENU_ITEM = "Debug As";
