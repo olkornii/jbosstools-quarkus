@@ -86,7 +86,6 @@ public class ApplicationYaml extends AbstractQuarkusTest {
 		ConsoleView consoleView = new ConsoleView();
 		new WaitUntil(new ConsoleHasText(consoleView, "new_test_quarkus_project_name"), TimePeriod.getCustom(600));
 
-		checkUrlContent("hello");
 		new DefaultToolItem("Terminate").click();
 	}
 
