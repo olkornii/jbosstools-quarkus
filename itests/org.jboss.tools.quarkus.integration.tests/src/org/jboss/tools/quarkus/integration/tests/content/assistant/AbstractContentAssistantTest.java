@@ -88,6 +88,13 @@ public abstract class AbstractContentAssistantTest {
 		ev.getExtension("SmallRye OpenAPI").select();
 		new ContextMenuItem("Install extension").select();
 		new WaitWhile(new JobIsRunning(), TimePeriod.VERY_LONG);
+		try {
+			Thread.sleep(5000); // 1 second sleep for sure, that Content Assistant will open
+		} catch (InterruptedException e) {
+			QuarkusCorePlugin.logException("Interrupted!", e);
+			Thread.currentThread().interrupt();
+		}
+		new WaitWhile(new JobIsRunning(), TimePeriod.VERY_LONG);
 
 		try {
 			String pomContent = InstallQuarkusExtensionTest.readFile(WORKSPACE + "/" + projectName + "/pom.xml");
