@@ -199,7 +199,7 @@ public abstract class AbstractQuarkusTest {
 		new NextButton().click();
 		new LabeledText("File name:").setText(fileName);
 		new FinishButton().click();
-		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
+		new WaitWhile(new JobIsRunning(), TimePeriod.VERY_LONG);
 	}
 
 	@After
