@@ -87,7 +87,7 @@ public abstract class AbstractQuarkusTest {
 
 	public static void checkJdkVersion(String projectName, String projectType) {
 		String javaVersion = System.getProperty(propertyName);
-		boolean isFound = javaVersion.contains(jdkVersion11);
+//		boolean isFound = javaVersion.contains(jdkVersion11);
 
 		String newSource;
 		String newTarget;
