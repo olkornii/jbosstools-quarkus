@@ -51,61 +51,61 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 		new QuarkusLaunchConfigurationTabGroup().openRunConfiguration();
 
 		new DefaultTreeItem(TextLabels.QUARKUS_APPLICATION_TREE_ITEM).select();
-		try {
-			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
-		} catch (InterruptedException e) {
-			QuarkusCorePlugin.logException("Interrupted!", e);
-			Thread.currentThread().interrupt();
-		}
+//		try {
+//			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+//		} catch (InterruptedException e) {
+//			QuarkusCorePlugin.logException("Interrupted!", e);
+//			Thread.currentThread().interrupt();
+//		}
 		new ContextMenuItem("New Configuration").select();
-		try {
-			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
-		} catch (InterruptedException e) {
-			QuarkusCorePlugin.logException("Interrupted!", e);
-			Thread.currentThread().interrupt();
-		}
+//		try {
+//			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+//		} catch (InterruptedException e) {
+//			QuarkusCorePlugin.logException("Interrupted!", e);
+//			Thread.currentThread().interrupt();
+//		}
 
 		new QuarkusLaunchConfigurationTabGroup().setName(projectName + TextLabels.CONFIGURATION);
 
-		try {
-			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
-		} catch (InterruptedException e) {
-			QuarkusCorePlugin.logException("Interrupted!", e);
-			Thread.currentThread().interrupt();
-		}
+//		try {
+//			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+//		} catch (InterruptedException e) {
+//			QuarkusCorePlugin.logException("Interrupted!", e);
+//			Thread.currentThread().interrupt();
+//		}
 		new PushButton("Browse...").click();
-		try {
-			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
-		} catch (InterruptedException e) {
-			QuarkusCorePlugin.logException("Interrupted!", e);
-			Thread.currentThread().interrupt();
-		}
+//		try {
+//			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+//		} catch (InterruptedException e) {
+//			QuarkusCorePlugin.logException("Interrupted!", e);
+//			Thread.currentThread().interrupt();
+//		}
 		new DefaultTableItem(projectName).select();
-		try {
-			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
-		} catch (InterruptedException e) {
-			QuarkusCorePlugin.logException("Interrupted!", e);
-			Thread.currentThread().interrupt();
-		}
+//		try {
+//			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+//		} catch (InterruptedException e) {
+//			QuarkusCorePlugin.logException("Interrupted!", e);
+//			Thread.currentThread().interrupt();
+//		}
 		new OkButton().click();
-		try {
-			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
-		} catch (InterruptedException e) {
-			QuarkusCorePlugin.logException("Interrupted!", e);
-			Thread.currentThread().interrupt();
-		}
+//		try {
+//			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+//		} catch (InterruptedException e) {
+//			QuarkusCorePlugin.logException("Interrupted!", e);
+//			Thread.currentThread().interrupt();
+//		}
 
-		DefaultShell runConfShell = new DefaultShell(Shell.RUN_CONFIGURATION);
-		runConfShell.setFocus();
-		new PushButton(runConfShell, "Apply").click();
+//		DefaultShell runConfShell = new DefaultShell(Shell.RUN_CONFIGURATION);
+//		runConfShell.setFocus();
+		new PushButton(new DefaultShell(Shell.RUN_CONFIGURATION), "Apply").click();
 //		new QuarkusLaunchConfigurationTabGroup().apply();
-		try {
-			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
-		} catch (InterruptedException e) {
-			QuarkusCorePlugin.logException("Interrupted!", e);
-			Thread.currentThread().interrupt();
-		}
-		runConfShell.close();
+//		try {
+//			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+//		} catch (InterruptedException e) {
+//			QuarkusCorePlugin.logException("Interrupted!", e);
+//			Thread.currentThread().interrupt();
+//		}
+		new DefaultShell(Shell.RUN_CONFIGURATION).close();
 //		new PushButton(runConfShell, TextLabels.CLOSE).click();
 //		new PushButton(TextLabels.CLOSE).click();
 	}
