@@ -20,6 +20,7 @@ import org.eclipse.reddeer.swt.impl.menu.ContextMenuItem;
 import org.eclipse.reddeer.swt.impl.shell.DefaultShell;
 import org.eclipse.reddeer.swt.impl.table.DefaultTableItem;
 import org.eclipse.reddeer.swt.impl.tree.DefaultTreeItem;
+import org.jboss.tools.quarkus.core.QuarkusCorePlugin;
 import org.jboss.tools.quarkus.integration.tests.project.universal.methods.AbstractQuarkusTest;
 import org.jboss.tools.quarkus.reddeer.common.QuarkusLabels.Shell;
 import org.jboss.tools.quarkus.reddeer.common.QuarkusLabels.TextLabels;
@@ -50,16 +51,58 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 		new QuarkusLaunchConfigurationTabGroup().openRunConfiguration();
 
 		new DefaultTreeItem(TextLabels.QUARKUS_APPLICATION_TREE_ITEM).select();
+		try {
+			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+		} catch (InterruptedException e) {
+			QuarkusCorePlugin.logException("Interrupted!", e);
+			Thread.currentThread().interrupt();
+		}
 		new ContextMenuItem("New Configuration").select();
+		try {
+			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+		} catch (InterruptedException e) {
+			QuarkusCorePlugin.logException("Interrupted!", e);
+			Thread.currentThread().interrupt();
+		}
 
 		new QuarkusLaunchConfigurationTabGroup().setName(projectName + TextLabels.CONFIGURATION);
 
+		try {
+			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+		} catch (InterruptedException e) {
+			QuarkusCorePlugin.logException("Interrupted!", e);
+			Thread.currentThread().interrupt();
+		}
 		new PushButton("Browse...").click();
+		try {
+			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+		} catch (InterruptedException e) {
+			QuarkusCorePlugin.logException("Interrupted!", e);
+			Thread.currentThread().interrupt();
+		}
 		new DefaultTableItem(projectName).select();
+		try {
+			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+		} catch (InterruptedException e) {
+			QuarkusCorePlugin.logException("Interrupted!", e);
+			Thread.currentThread().interrupt();
+		}
 		new OkButton().click();
+		try {
+			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+		} catch (InterruptedException e) {
+			QuarkusCorePlugin.logException("Interrupted!", e);
+			Thread.currentThread().interrupt();
+		}
 
 		new PushButton(new DefaultShell(Shell.RUN_CONFIGURATION), "Apply").click();
 //		new QuarkusLaunchConfigurationTabGroup().apply();
+		try {
+			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
+		} catch (InterruptedException e) {
+			QuarkusCorePlugin.logException("Interrupted!", e);
+			Thread.currentThread().interrupt();
+		}
 		new PushButton(new DefaultShell(Shell.RUN_CONFIGURATION), TextLabels.CLOSE).click();
 //		new PushButton(TextLabels.CLOSE).click();
 	}
