@@ -117,7 +117,7 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 
 		new DefaultTreeItem(TextLabels.QUARKUS_APPLICATION_TREE_ITEM, projectName + TextLabels.CONFIGURATION).select();
 
-		new DefaultShell(Shell.RUN_CONFIGURATION).close();
+		new PushButton(TextLabels.CLOSE).click();
 	}
 
 	public void runNewQuarkusConfiguration(String projectName) {
@@ -142,7 +142,7 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 
 		new DefaultToolItem("Delete selected launch configuration(s)").click();
 		new PushButton("Delete").click();
-		new DefaultShell(Shell.RUN_CONFIGURATION).close();
+		new PushButton(TextLabels.CLOSE).click();
 
 	}
 }
