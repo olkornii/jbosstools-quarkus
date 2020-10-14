@@ -142,6 +142,7 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 
 		new DefaultToolItem("Delete selected launch configuration(s)").click();
 		new PushButton("Delete").click();
+		new DefaultShell(Shell.RUN_CONFIGURATION).setFocus();
 		new PushButton(TextLabels.CLOSE).click();
 
 	}
