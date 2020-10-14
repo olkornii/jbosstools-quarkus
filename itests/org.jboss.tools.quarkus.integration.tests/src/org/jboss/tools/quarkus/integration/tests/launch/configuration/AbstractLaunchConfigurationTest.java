@@ -95,7 +95,9 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 			Thread.currentThread().interrupt();
 		}
 
-		new PushButton(new DefaultShell(Shell.RUN_CONFIGURATION), "Apply").click();
+		DefaultShell runConfShell = new DefaultShell(Shell.RUN_CONFIGURATION);
+		runConfShell.setFocus();
+		new PushButton(runConfShell, "Apply").click();
 //		new QuarkusLaunchConfigurationTabGroup().apply();
 		try {
 			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
@@ -103,7 +105,8 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 			QuarkusCorePlugin.logException("Interrupted!", e);
 			Thread.currentThread().interrupt();
 		}
-		new PushButton(new DefaultShell(Shell.RUN_CONFIGURATION), TextLabels.CLOSE).click();
+		runConfShell.setFocus();
+		new PushButton(runConfShell, TextLabels.CLOSE).click();
 //		new PushButton(TextLabels.CLOSE).click();
 	}
 
