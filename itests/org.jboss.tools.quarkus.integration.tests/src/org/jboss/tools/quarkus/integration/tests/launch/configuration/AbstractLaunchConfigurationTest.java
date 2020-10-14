@@ -95,19 +95,20 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 //			Thread.currentThread().interrupt();
 //		}
 
-		DefaultShell runConfShell = new DefaultShell(Shell.RUN_CONFIGURATION);
-//		runConfShell.setFocus();
-		new PushButton(runConfShell, "Apply").click();
-//		new QuarkusLaunchConfigurationTabGroup().apply();
+//		DefaultShell runConfShell = new DefaultShell(Shell.RUN_CONFIGURATION);
+		new DefaultShell(Shell.RUN_CONFIGURATION).setFocus();
+//		new PushButton(runConfShell, "Apply").click();
+		new QuarkusLaunchConfigurationTabGroup().apply();
+//		new PushButton("Apply").click();
 //		try {
 //			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
 //		} catch (InterruptedException e) {
 //			QuarkusCorePlugin.logException("Interrupted!", e);
 //			Thread.currentThread().interrupt();
 //		}
-		runConfShell.close();
+//		runConfShell.close();
 //		new PushButton(runConfShell, TextLabels.CLOSE).click();
-//		new PushButton(TextLabels.CLOSE).click();
+		new PushButton(TextLabels.CLOSE).click();
 	}
 
 	public void checkNewQuarkusConfiguration(String projectName) {
