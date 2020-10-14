@@ -105,8 +105,8 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 			QuarkusCorePlugin.logException("Interrupted!", e);
 			Thread.currentThread().interrupt();
 		}
-		runConfShell.setFocus();
-		new PushButton(runConfShell, TextLabels.CLOSE).click();
+		runConfShell.close();
+//		new PushButton(runConfShell, TextLabels.CLOSE).click();
 //		new PushButton(TextLabels.CLOSE).click();
 	}
 
