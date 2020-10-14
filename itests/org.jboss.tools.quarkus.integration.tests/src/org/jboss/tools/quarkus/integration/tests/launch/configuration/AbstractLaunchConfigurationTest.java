@@ -95,9 +95,9 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 //			Thread.currentThread().interrupt();
 //		}
 
-//		DefaultShell runConfShell = new DefaultShell(Shell.RUN_CONFIGURATION);
+		DefaultShell runConfShell = new DefaultShell(Shell.RUN_CONFIGURATION);
 //		runConfShell.setFocus();
-		new PushButton(new DefaultShell(Shell.RUN_CONFIGURATION), "Apply").click();
+		new PushButton(runConfShell, "Apply").click();
 //		new QuarkusLaunchConfigurationTabGroup().apply();
 //		try {
 //			Thread.sleep(3000); // 1 second sleep for sure, that Content Assistant will open
@@ -105,7 +105,7 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 //			QuarkusCorePlugin.logException("Interrupted!", e);
 //			Thread.currentThread().interrupt();
 //		}
-		new DefaultShell(Shell.RUN_CONFIGURATION).close();
+		runConfShell.close();
 //		new PushButton(runConfShell, TextLabels.CLOSE).click();
 //		new PushButton(TextLabels.CLOSE).click();
 	}
@@ -116,7 +116,7 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 
 		new DefaultTreeItem(TextLabels.QUARKUS_APPLICATION_TREE_ITEM, projectName + TextLabels.CONFIGURATION).select();
 
-		new PushButton(TextLabels.CLOSE).click();
+		new DefaultShell(Shell.RUN_CONFIGURATION).close();
 	}
 
 	public void runNewQuarkusConfiguration(String projectName) {
@@ -141,7 +141,7 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 
 		new DefaultToolItem("Delete selected launch configuration(s)").click();
 		new PushButton("Delete").click();
-		new PushButton(TextLabels.CLOSE).click();
+		new DefaultShell(Shell.RUN_CONFIGURATION).close();
 
 	}
 }
