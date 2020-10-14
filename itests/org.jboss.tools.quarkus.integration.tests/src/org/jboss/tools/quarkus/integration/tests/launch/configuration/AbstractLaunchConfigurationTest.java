@@ -17,9 +17,11 @@ import org.eclipse.reddeer.eclipse.ui.console.ConsoleView;
 import org.eclipse.reddeer.swt.impl.button.OkButton;
 import org.eclipse.reddeer.swt.impl.button.PushButton;
 import org.eclipse.reddeer.swt.impl.menu.ContextMenuItem;
+import org.eclipse.reddeer.swt.impl.shell.DefaultShell;
 import org.eclipse.reddeer.swt.impl.table.DefaultTableItem;
 import org.eclipse.reddeer.swt.impl.tree.DefaultTreeItem;
 import org.jboss.tools.quarkus.integration.tests.project.universal.methods.AbstractQuarkusTest;
+import org.jboss.tools.quarkus.reddeer.common.QuarkusLabels.Shell;
 import org.jboss.tools.quarkus.reddeer.common.QuarkusLabels.TextLabels;
 import org.jboss.tools.quarkus.reddeer.ui.launch.QuarkusLaunchConfigurationTabGroup;
 import org.eclipse.reddeer.swt.impl.toolbar.DefaultToolItem;
@@ -56,7 +58,8 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 		new DefaultTableItem(projectName).select();
 		new OkButton().click();
 
-		new QuarkusLaunchConfigurationTabGroup().apply();
+		new PushButton(new DefaultShell(Shell.RUN_CONFIGURATION), "Apply").click();
+//		new QuarkusLaunchConfigurationTabGroup().apply();
 		new PushButton(TextLabels.CLOSE).click();
 	}
 
