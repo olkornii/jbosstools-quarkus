@@ -60,7 +60,8 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 
 		new PushButton(new DefaultShell(Shell.RUN_CONFIGURATION), "Apply").click();
 //		new QuarkusLaunchConfigurationTabGroup().apply();
-		new PushButton(TextLabels.CLOSE).click();
+		new PushButton(new DefaultShell(Shell.RUN_CONFIGURATION), TextLabels.CLOSE).click();
+//		new PushButton(TextLabels.CLOSE).click();
 	}
 
 	public void checkNewQuarkusConfiguration(String projectName) {
