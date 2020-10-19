@@ -65,13 +65,12 @@ public class ApplicationYaml extends AbstractQuarkusTest {
 	@Test
 	public void runWithApplicationYaml() {
 		new ProjectExplorer().getProject(PROJECT_NAME).getProjectItem(POM_NAME).open();
-		TextEditor editor = new TextEditor(POM_NAME);
 
-		addExtensionInPomFile(editor);
+		addExtensionInPomFile();
 
 		createNewFile(PROJECT_NAME, APPLICATION_YAML_NAME, APPLICATION_YAML_PATH);
 
-		addLinesInApplicationYaml(editor);
+		addLinesInApplicationYaml();
 
 		WorkbenchShellHandler.getInstance().closeAllNonWorbenchShells();
 
@@ -88,7 +87,8 @@ public class ApplicationYaml extends AbstractQuarkusTest {
 		new DefaultToolItem("Terminate").click();
 	}
 
-	private void addExtensionInPomFile(TextEditor editor) {
+	private void addExtensionInPomFile() {
+		TextEditor editor = new TextEditor(POM_NAME);
 		int end_line_number = editor.getLineOfText("</dependencyManagement>");
 		String start_dependencies_line = editor.getTextAtLine(end_line_number + 1);
 		assertEquals("Expected <dependencies> but was " + start_dependencies_line, "  <dependencies>",
@@ -103,8 +103,8 @@ public class ApplicationYaml extends AbstractQuarkusTest {
 		new WaitWhile(new JobIsRunning(), TimePeriod.VERY_LONG);
 	}
 
-	private void addLinesInApplicationYaml(TextEditor editor) {
-		editor = new TextEditor(APPLICATION_YAML_NAME);
+	private void addLinesInApplicationYaml() {
+		TextEditor editor = new TextEditor(APPLICATION_YAML_NAME);
 
 		int line_for_insert = 0;
 		for (String str : application_yaml) {

@@ -74,8 +74,9 @@ public abstract class AbstractLaunchConfigurationTest extends AbstractQuarkusTes
 	}
 
 	public void runNewQuarkusConfiguration(String projectName) {
-		new QuarkusLaunchConfigurationTabGroup().selectProject(projectName);
-		new QuarkusLaunchConfigurationTabGroup().openRunConfiguration();
+		QuarkusLaunchConfigurationTabGroup lc = new QuarkusLaunchConfigurationTabGroup();
+		lc.selectProject(projectName);
+		lc.openRunConfiguration();
 
 		new DefaultTreeItem(TextLabels.QUARKUS_APPLICATION_TREE_ITEM, projectName + TextLabels.CONFIGURATION).select();
 

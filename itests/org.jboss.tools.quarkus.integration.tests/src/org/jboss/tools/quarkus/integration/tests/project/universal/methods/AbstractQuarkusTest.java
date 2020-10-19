@@ -68,11 +68,11 @@ public abstract class AbstractQuarkusTest {
 		assertTrue(new ProjectExplorer().containsProject(projectName));
 
 		if (projectType.equals(TextLabels.MAVEN_TYPE)) {
-			changePom(projectName, projectType, pomFile);
+			changePom(projectName, pomFile);
 		}
 	}
 
-	private static void changePom(String projectName, String projectType, String openFile) {
+	private static void changePom(String projectName, String openFile) {
 		new ProjectExplorer().getProject(projectName).getProjectItem(openFile).select();
 		new ContextMenuItem(TextLabels.OPEN_WITH, TextLabels.TEXT_EDITOR).select();
 
@@ -109,9 +109,9 @@ public abstract class AbstractQuarkusTest {
 
 	public static void createNewFile(String projectName, String fileName, String filePath) {
 		new WorkbenchShell().setFocus();
-		new ProjectExplorer().selectProjects(projectName);
-
-		new ProjectExplorer().getProject(projectName).getProjectItem(filePath).select();
+		ProjectExplorer pe = new ProjectExplorer();
+		pe.selectProjects(projectName);
+		pe.getProject(projectName).getProjectItem(filePath).select();
 		new ContextMenuItem(TextLabels.NEW_CONTEXT_ITEM, "Other...").select();
 		new LabeledText("Wizards:").setText("File");
 		new NextButton().click();
