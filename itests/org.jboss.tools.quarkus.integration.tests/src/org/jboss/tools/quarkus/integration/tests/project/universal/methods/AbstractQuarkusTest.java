@@ -17,12 +17,13 @@ import java.util.List;
 
 import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.common.wait.WaitWhile;
+import org.eclipse.reddeer.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.reddeer.eclipse.ui.navigator.resources.ProjectExplorer;
 import org.eclipse.reddeer.eclipse.ui.problems.Problem;
 import org.eclipse.reddeer.eclipse.ui.views.markers.ProblemsView;
 import org.eclipse.reddeer.eclipse.ui.views.markers.ProblemsView.ProblemType;
+import org.eclipse.reddeer.eclipse.ui.wizards.newresource.BasicNewFileResourceWizard;
 import org.eclipse.reddeer.swt.impl.button.FinishButton;
-import org.eclipse.reddeer.swt.impl.button.NextButton;
 import org.eclipse.reddeer.swt.impl.button.OkButton;
 import org.eclipse.reddeer.swt.impl.menu.ContextMenuItem;
 import org.eclipse.reddeer.swt.impl.text.LabeledText;
@@ -108,14 +109,11 @@ public abstract class AbstractQuarkusTest {
 	}
 
 	public static void createNewFile(String projectName, String fileName, String filePath) {
-		new WorkbenchShell().setFocus();
-		ProjectExplorer pe = new ProjectExplorer();
-		pe.selectProjects(projectName);
-		pe.getProject(projectName).getProjectItem(filePath).select();
-		new ContextMenuItem(TextLabels.NEW_CONTEXT_ITEM, "Other...").select();
-		new LabeledText("Wizards:").setText("File");
-		new NextButton().click();
-		new LabeledText("File name:").setText(fileName);
+		BasicNewFileResourceWizard newFileDialog = new BasicNewFileResourceWizard();
+		newFileDialog.open();
+		WizardNewFileCreationPage page = new WizardNewFileCreationPage(newFileDialog);
+		page.setFileName(fileName);
+		page.setFolderPath(projectName + "/" + filePath);
 		new FinishButton().click();
 		new WaitWhile(new JobIsRunning(), TimePeriod.VERY_LONG);
 	}
