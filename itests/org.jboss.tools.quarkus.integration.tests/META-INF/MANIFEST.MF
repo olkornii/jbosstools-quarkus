@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.reddeer.go,
  org.eclipse.buildship.ui,
  org.gradle.toolingapi,
  com.redhat.microprofile.jdt.quarkus,
- org.jboss.tools.quarkus.core
+ org.jboss.tools.quarkus.core,
+ org.jboss.tools.central.reddeer
 Import-Package: org.eclipse.core.resources, org.jboss.tools.quarkus.lsp4e
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Eclipse-BundleShape: jar
