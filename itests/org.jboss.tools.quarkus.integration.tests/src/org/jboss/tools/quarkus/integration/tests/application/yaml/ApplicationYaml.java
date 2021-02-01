@@ -79,7 +79,6 @@ public class ApplicationYaml extends AbstractQuarkusTest {
 
 		ConsoleView consoleView = new ConsoleView();
 		new WaitUntil(new ConsoleHasText(consoleView, "new_test_quarkus_project_name"), TimePeriod.getCustom(600));
-
 		checkUrlContent("Hello RESTEasy");
 
 		consoleView.terminateConsole();
@@ -96,7 +95,6 @@ public class ApplicationYaml extends AbstractQuarkusTest {
 		for (String str : extension) {
 			editor.insertLine(lineForInsert, str);
 		}
-
 		editor.close(true);
 		new WaitWhile(new JobIsRunning(), TimePeriod.VERY_LONG);
 	}
